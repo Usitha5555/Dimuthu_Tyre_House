@@ -98,12 +98,9 @@ public class Dashboard extends javax.swing.JFrame implements ActionListener {
        
           dt();
           times();
-        
-          
-          
-
+                      
     }
-
+     // testing
     public Dashboard(Component parent, String Uname) {
         initComponents();
         
