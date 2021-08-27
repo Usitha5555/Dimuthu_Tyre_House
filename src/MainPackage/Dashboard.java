@@ -80,6 +80,10 @@ public class Dashboard extends javax.swing.JFrame implements ActionListener {
     private PanelSearch search5;
     private JPopupMenu menu6;
     private PanelSearch search6;
+    private JPopupMenu menu7;
+    private PanelSearch search7;
+    private JPopupMenu menu8;
+    private PanelSearch search8;
     public Dashboard() {
         initComponents();
          connect();
@@ -95,12 +99,17 @@ public class Dashboard extends javax.swing.JFrame implements ActionListener {
         suggest_tyre_size() ;
         update_brand_search();
         update_size_search();
+        sales_brand_search();
+        sales_size_search();
        
           dt();
           times();
-                      
+        
+          
+          
+
     }
-     // testing
+
     public Dashboard(Component parent, String Uname) {
         initComponents();
         
@@ -368,6 +377,64 @@ public void suggest_tyre_brand()
             }
         });
       }
+       public void sales_brand_search() 
+      {
+      
+      menu7 = new JPopupMenu();
+        search7 = new PanelSearch();
+        menu7.setBorder(BorderFactory.createLineBorder(new Color(164, 164, 164)));
+        menu7.add(search7);
+        menu7.setFocusable(false);
+        search7.addEventClick(new EventClick() {
+            @Override
+            public void itemClick(DataSearch data) {
+                menu7.setVisible(false);
+                sales_brand_s.setText(data.getText());
+                addStory(data.getText());
+                System.out.println("Click Item : " + data.getText());
+            }
+
+            @Override
+            public void itemRemove(Component com, DataSearch data) {
+                search7.remove(com);
+                removeHistory(data.getText());
+                menu7.setPopupSize(menu7.getWidth(), (search7.getItemSize() * 35) + 2);
+                if (search7.getItemSize() == 0) {
+                    menu7.setVisible(false);
+                }
+                System.out.println("Remove Item : " + data.getText());
+            }
+        });
+      }
+       public void sales_size_search() 
+      {
+      
+      menu8 = new JPopupMenu();
+        search8 = new PanelSearch();
+        menu8.setBorder(BorderFactory.createLineBorder(new Color(164, 164, 164)));
+        menu8.add(search8);
+        menu8.setFocusable(false);
+        search8.addEventClick(new EventClick() {
+            @Override
+            public void itemClick(DataSearch data) {
+                menu8.setVisible(false);
+                sales_size_s.setText(data.getText());
+                addStory(data.getText());
+                System.out.println("Click Item : " + data.getText());
+            }
+
+            @Override
+            public void itemRemove(Component com, DataSearch data) {
+                search8.remove(com);
+                removeHistory(data.getText());
+                menu8.setPopupSize(menu8.getWidth(), (search8.getItemSize() * 35) + 2);
+                if (search8.getItemSize() == 0) {
+                    menu8.setVisible(false);
+                }
+                System.out.println("Remove Item : " + data.getText());
+            }
+        });
+      }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -413,6 +480,7 @@ public void suggest_tyre_brand()
         tyresecp = new javax.swing.JPanel();
         kGradientPanel4 = new keeptoo.KGradientPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
         alloyp = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         alloytb = new javax.swing.JTable();
@@ -452,8 +520,6 @@ public void suggest_tyre_brand()
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSales = new javax.swing.JTable();
         btnPrint = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
         sales_discount = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         txtBalance = new javax.swing.JTextField();
@@ -461,10 +527,20 @@ public void suggest_tyre_brand()
         jLabel42 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        sales_size_s = new swing.MyTextField();
-        sales_brand_s = new swing.MyTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         sales_select = new javax.swing.JTable();
+        salesearch = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        salerefresh = new javax.swing.JPanel();
+        saleslbl4 = new javax.swing.JLabel();
+        sales_brand_s = new swing.MyTextField();
+        sales_size_s = new swing.MyTextField();
+        salesclear = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        salesadd = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
+        salesinvoice = new javax.swing.JPanel();
+        jLabel52 = new javax.swing.JLabel();
         updatep = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         update_search = new javax.swing.JPanel();
@@ -488,6 +564,8 @@ public void suggest_tyre_brand()
         jLabel45 = new javax.swing.JLabel();
         update_sellingp = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        updatestk = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         purchasep = new javax.swing.JPanel();
         purtb_del = new javax.swing.JPanel();
         itemlbl1 = new javax.swing.JLabel();
@@ -525,9 +603,12 @@ public void suggest_tyre_brand()
         pursprice = new javax.swing.JTextField();
         errortxt = new javax.swing.JLabel();
         statisticsp = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        chart2st = new javax.swing.JPanel();
         chart1st = new javax.swing.JPanel();
+        chart2st = new javax.swing.JPanel();
+        staticsticsbtn2 = new javax.swing.JPanel();
+        statisticslbl1 = new javax.swing.JLabel();
+        statisticsp2 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -549,6 +630,7 @@ public void suggest_tyre_brand()
 
         dashbtn.setBackground(new java.awt.Color(255, 255, 255));
         dashbtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        dashbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dashbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dashbtnMouseClicked(evt);
@@ -565,6 +647,7 @@ public void suggest_tyre_brand()
 
         itembtn.setBackground(new java.awt.Color(51, 51, 255));
         itembtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        itembtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         itembtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 itembtnMouseClicked(evt);
@@ -581,6 +664,7 @@ public void suggest_tyre_brand()
 
         salesbtn.setBackground(new java.awt.Color(51, 51, 255));
         salesbtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        salesbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salesbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salesbtnMouseClicked(evt);
@@ -597,6 +681,7 @@ public void suggest_tyre_brand()
 
         updatebtn.setBackground(new java.awt.Color(51, 51, 255));
         updatebtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        updatebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updatebtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 updatebtnMouseClicked(evt);
@@ -613,6 +698,7 @@ public void suggest_tyre_brand()
 
         purchasebtn.setBackground(new java.awt.Color(51, 51, 255));
         purchasebtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        purchasebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         purchasebtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 purchasebtnMouseClicked(evt);
@@ -629,6 +715,7 @@ public void suggest_tyre_brand()
 
         statisticsbtn.setBackground(new java.awt.Color(51, 51, 255));
         statisticsbtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        statisticsbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         statisticsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 statisticsbtnMouseClicked(evt);
@@ -645,6 +732,7 @@ public void suggest_tyre_brand()
 
         jPanel9.setBackground(new java.awt.Color(51, 51, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("YuGothic", 1, 12)); // NOI18N
@@ -801,6 +889,7 @@ public void suggest_tyre_brand()
 
         alloysecp.setBackground(new java.awt.Color(255, 255, 255));
         alloysecp.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 255), 1, true));
+        alloysecp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         alloysecp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 alloysecpMouseClicked(evt);
@@ -823,6 +912,7 @@ public void suggest_tyre_brand()
 
         tyresecp.setBackground(new java.awt.Color(255, 255, 255));
         tyresecp.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 255), 1, true));
+        tyresecp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tyresecp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tyresecpMouseClicked(evt);
@@ -840,6 +930,15 @@ public void suggest_tyre_brand()
         kGradientPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         tyresecp.add(kGradientPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 260, 50));
+
+        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MainPackage/pngwing.com (3).png"))); // NOI18N
+        jLabel48.setToolTipText("");
+        jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel48MouseClicked(evt);
+            }
+        });
+        tyresecp.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 330));
 
         kGradientPanel2.add(tyresecp, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, -1, -1));
 
@@ -870,6 +969,7 @@ public void suggest_tyre_brand()
 
         alloysearch.setBackground(new java.awt.Color(51, 51, 255));
         alloysearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        alloysearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         alloysearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 alloysearchMouseClicked(evt);
@@ -884,6 +984,7 @@ public void suggest_tyre_brand()
 
         refreshalltbl.setBackground(new java.awt.Color(51, 51, 255));
         refreshalltbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        refreshalltbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         refreshalltbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 refreshalltblMouseClicked(evt);
@@ -988,6 +1089,7 @@ public void suggest_tyre_brand()
 
         tyresearch1.setBackground(new java.awt.Color(51, 51, 255));
         tyresearch1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        tyresearch1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tyresearch1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tyresearch1MouseClicked(evt);
@@ -1002,6 +1104,7 @@ public void suggest_tyre_brand()
 
         refreshtyretbl1.setBackground(new java.awt.Color(51, 51, 255));
         refreshtyretbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        refreshtyretbl1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         refreshtyretbl1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 refreshtyretbl1MouseClicked(evt);
@@ -1058,20 +1161,19 @@ public void suggest_tyre_brand()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tyre_brand_s, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tyre_size_s, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tyresearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(refreshtyretbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(tyrepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 944, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tyrepLayout.createSequentialGroup()
+                        .addComponent(tyre_brand_s, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tyre_size_s, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tyresearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(refreshtyretbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(338, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tyrepLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 944, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
         );
         tyrepLayout.setVerticalGroup(
             tyrepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1083,22 +1185,21 @@ public void suggest_tyre_brand()
                             .addComponent(tyre_brand_s, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tyre_size_s, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(tyrepLayout.createSequentialGroup()
-                        .addGroup(tyrepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(tyrepLayout.createSequentialGroup()
-                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4))
-                            .addGroup(tyrepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(refreshtyretbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(tyresearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
-                        .addGap(183, 183, 183))))
+                        .addGap(24, 24, 24))
+                    .addGroup(tyrepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(tyrepLayout.createSequentialGroup()
+                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(4, 4, 4))
+                        .addGroup(tyrepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(refreshtyretbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(tyresearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                .addGap(192, 192, 192))
         );
 
         jPanel10.add(tyrep, "card2");
 
+        salesp.setBackground(new java.awt.Color(255, 255, 255));
         salesp.setLayout(null);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
@@ -1177,24 +1278,6 @@ public void suggest_tyre_brand()
         });
         salesp.add(btnPrint);
         btnPrint.setBounds(920, 630, 160, 70);
-
-        btnClear.setText("CLEAR");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-        salesp.add(btnClear);
-        btnClear.setBounds(200, 630, 120, 70);
-
-        btnAdd.setText("ADD");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-        salesp.add(btnAdd);
-        btnAdd.setBounds(360, 630, 120, 70);
         salesp.add(sales_discount);
         sales_discount.setBounds(450, 540, 200, 30);
 
@@ -1225,40 +1308,6 @@ public void suggest_tyre_brand()
         salesp.add(jLabel47);
         jLabel47.setBounds(30, 80, 42, 19);
 
-        sales_size_s.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
-        sales_size_s.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sales_size_sMouseClicked(evt);
-            }
-        });
-        sales_size_s.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                sales_size_sKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                sales_size_sKeyReleased(evt);
-            }
-        });
-        salesp.add(sales_size_s);
-        sales_size_s.setBounds(400, 80, 210, 28);
-
-        sales_brand_s.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
-        sales_brand_s.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sales_brand_sMouseClicked(evt);
-            }
-        });
-        sales_brand_s.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                sales_brand_sKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                sales_brand_sKeyReleased(evt);
-            }
-        });
-        salesp.add(sales_brand_s);
-        sales_brand_s.setBounds(80, 80, 210, 28);
-
         sales_select.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1281,13 +1330,140 @@ public void suggest_tyre_brand()
         salesp.add(jScrollPane5);
         jScrollPane5.setBounds(40, 130, 710, 320);
 
+        salesearch.setBackground(new java.awt.Color(51, 51, 255));
+        salesearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        salesearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salesearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salesearchMouseClicked(evt);
+            }
+        });
+        salesearch.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel49.setFont(new java.awt.Font("YuGothic", 1, 12)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("SEARCH");
+        salesearch.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 50, 30));
+
+        salesp.add(salesearch);
+        salesearch.setBounds(700, 60, 130, 30);
+
+        salerefresh.setBackground(new java.awt.Color(51, 51, 255));
+        salerefresh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        salerefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salerefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salerefreshMouseClicked(evt);
+            }
+        });
+        salerefresh.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        saleslbl4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        saleslbl4.setForeground(new java.awt.Color(255, 255, 255));
+        saleslbl4.setText("REFRESH");
+        salerefresh.add(saleslbl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -10, 80, 50));
+
+        salesp.add(salerefresh);
+        salerefresh.setBounds(840, 70, 130, 30);
+
+        sales_brand_s.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
+        sales_brand_s.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sales_brand_sMouseClicked(evt);
+            }
+        });
+        sales_brand_s.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sales_brand_sKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                sales_brand_sKeyReleased(evt);
+            }
+        });
+        salesp.add(sales_brand_s);
+        sales_brand_s.setBounds(100, 70, 270, 28);
+
+        sales_size_s.setPrefixIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
+        sales_size_s.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sales_size_sMouseClicked(evt);
+            }
+        });
+        sales_size_s.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                sales_size_sKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                sales_size_sKeyReleased(evt);
+            }
+        });
+        salesp.add(sales_size_s);
+        sales_size_s.setBounds(400, 70, 270, 28);
+
+        salesclear.setBackground(new java.awt.Color(51, 51, 255));
+        salesclear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        salesclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salesclear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salesclearMouseClicked(evt);
+            }
+        });
+        salesclear.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel50.setFont(new java.awt.Font("YuGothic", 1, 12)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("CLEAR");
+        salesclear.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 50, 30));
+
+        salesp.add(salesclear);
+        salesclear.setBounds(380, 600, 130, 30);
+
+        salesadd.setBackground(new java.awt.Color(51, 51, 255));
+        salesadd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        salesadd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salesadd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salesaddMouseClicked(evt);
+            }
+        });
+        salesadd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel51.setFont(new java.awt.Font("YuGothic", 1, 12)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setText("ADD");
+        salesadd.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 50, 30));
+
+        salesp.add(salesadd);
+        salesadd.setBounds(220, 600, 140, 30);
+
+        salesinvoice.setBackground(new java.awt.Color(51, 51, 255));
+        salesinvoice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        salesinvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salesinvoice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salesinvoiceMouseClicked(evt);
+            }
+        });
+        salesinvoice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel52.setFont(new java.awt.Font("YuGothic", 1, 12)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel52.setText("PRINT INVOICE");
+        salesinvoice.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 120, 40));
+
+        salesp.add(salesinvoice);
+        salesinvoice.setBounds(580, 620, 170, 40);
+
         jPanel10.add(salesp, "card2");
+
+        updatep.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel37.setFont(new java.awt.Font("YuGothic", 1, 14)); // NOI18N
         jLabel37.setText("Size");
 
         update_search.setBackground(new java.awt.Color(51, 51, 255));
         update_search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        update_search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         update_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 update_searchMouseClicked(evt);
@@ -1302,6 +1478,7 @@ public void suggest_tyre_brand()
 
         refreshalltbl1.setBackground(new java.awt.Color(51, 51, 255));
         refreshalltbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        refreshalltbl1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         refreshalltbl1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 refreshalltbl1MouseClicked(evt);
@@ -1486,6 +1663,21 @@ public void suggest_tyre_brand()
 
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
 
+        updatestk.setBackground(new java.awt.Color(51, 51, 255));
+        updatestk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        updatestk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updatestk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updatestkMouseClicked(evt);
+            }
+        });
+        updatestk.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("YuGothic", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("UPDATE");
+        updatestk.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 50, 30));
+
         javax.swing.GroupLayout updatepLayout = new javax.swing.GroupLayout(updatep);
         updatep.setLayout(updatepLayout);
         updatepLayout.setHorizontalGroup(
@@ -1511,6 +1703,10 @@ public void suggest_tyre_brand()
                         .addGap(18, 18, 18)
                         .addComponent(refreshalltbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(376, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatepLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(updatestk, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(909, 909, 909))
         );
         updatepLayout.setVerticalGroup(
             updatepLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1529,7 +1725,9 @@ public void suggest_tyre_brand()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(updatestk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(87, 87, 87))
         );
 
         jPanel10.add(updatep, "card2");
@@ -1539,6 +1737,7 @@ public void suggest_tyre_brand()
 
         purtb_del.setBackground(new java.awt.Color(51, 51, 255));
         purtb_del.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        purtb_del.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         purtb_del.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 purtb_delMouseClicked(evt);
@@ -1571,6 +1770,7 @@ public void suggest_tyre_brand()
 
         pur_clear_details.setBackground(new java.awt.Color(51, 51, 255));
         pur_clear_details.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        pur_clear_details.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pur_clear_details.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pur_clear_detailsMouseClicked(evt);
@@ -1598,6 +1798,7 @@ public void suggest_tyre_brand()
 
         purtb_clear.setBackground(new java.awt.Color(51, 51, 255));
         purtb_clear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        purtb_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         purtb_clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 purtb_clearMouseClicked(evt);
@@ -1614,6 +1815,7 @@ public void suggest_tyre_brand()
 
         pur_addstock.setBackground(new java.awt.Color(51, 51, 255));
         pur_addstock.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        pur_addstock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pur_addstock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pur_addstockMouseClicked(evt);
@@ -1630,6 +1832,7 @@ public void suggest_tyre_brand()
 
         pur_add_details.setBackground(new java.awt.Color(51, 51, 255));
         pur_add_details.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        pur_add_details.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pur_add_details.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pur_add_detailsMouseClicked(evt);
@@ -1830,19 +2033,6 @@ public void suggest_tyre_brand()
 
         jPanel10.add(purchasep, "card2");
 
-        jLabel15.setText("statistics");
-
-        javax.swing.GroupLayout chart2stLayout = new javax.swing.GroupLayout(chart2st);
-        chart2st.setLayout(chart2stLayout);
-        chart2stLayout.setHorizontalGroup(
-            chart2stLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-        );
-        chart2stLayout.setVerticalGroup(
-            chart2stLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 247, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout chart1stLayout = new javax.swing.GroupLayout(chart1st);
         chart1st.setLayout(chart1stLayout);
         chart1stLayout.setHorizontalGroup(
@@ -1851,7 +2041,44 @@ public void suggest_tyre_brand()
         );
         chart1stLayout.setVerticalGroup(
             chart1stLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
+            .addGap(0, 273, Short.MAX_VALUE)
+        );
+
+        staticsticsbtn2.setBackground(new java.awt.Color(51, 51, 255));
+        staticsticsbtn2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
+        staticsticsbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        staticsticsbtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                staticsticsbtn2MouseClicked(evt);
+            }
+        });
+        staticsticsbtn2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        statisticslbl1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        statisticslbl1.setForeground(new java.awt.Color(255, 255, 255));
+        statisticslbl1.setText("STATISTICS");
+        statisticslbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                statisticslbl1MouseClicked(evt);
+            }
+        });
+        staticsticsbtn2.add(statisticslbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 70, 40));
+
+        javax.swing.GroupLayout chart2stLayout = new javax.swing.GroupLayout(chart2st);
+        chart2st.setLayout(chart2stLayout);
+        chart2stLayout.setHorizontalGroup(
+            chart2stLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(chart2stLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(staticsticsbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+        chart2stLayout.setVerticalGroup(
+            chart2stLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(chart2stLayout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(staticsticsbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout statisticspLayout = new javax.swing.GroupLayout(statisticsp);
@@ -1859,32 +2086,44 @@ public void suggest_tyre_brand()
         statisticspLayout.setHorizontalGroup(
             statisticspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statisticspLayout.createSequentialGroup()
-                .addContainerGap(415, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addGap(134, 134, 134)
+                .addGap(374, 374, 374)
                 .addComponent(chart2st, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(173, 173, 173)
                 .addComponent(chart1st, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
         statisticspLayout.setVerticalGroup(
             statisticspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, statisticspLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chart1st, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(400, 400, 400))
             .addGroup(statisticspLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
                 .addGroup(statisticspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(statisticspLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(chart2st, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(statisticspLayout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jLabel15)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(chart2st, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chart1st, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         jPanel10.add(statisticsp, "card2");
+
+        jLabel15.setText("stat 2");
+
+        javax.swing.GroupLayout statisticsp2Layout = new javax.swing.GroupLayout(statisticsp2);
+        statisticsp2.setLayout(statisticsp2Layout);
+        statisticsp2Layout.setHorizontalGroup(
+            statisticsp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statisticsp2Layout.createSequentialGroup()
+                .addGap(638, 638, 638)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(782, Short.MAX_VALUE))
+        );
+        statisticsp2Layout.setVerticalGroup(
+            statisticsp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statisticsp2Layout.createSequentialGroup()
+                .addGap(253, 253, 253)
+                .addComponent(jLabel15)
+                .addContainerGap(463, Short.MAX_VALUE))
+        );
+
+        jPanel10.add(statisticsp2, "card10");
 
         kGradientPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 1460, 730));
 
@@ -2087,6 +2326,44 @@ public void suggest_tyre_brand()
             e.printStackTrace(); 
         }
         return list;   }
+       
+       private List<DataSearch> search7(String search) {
+        List<DataSearch> list = new ArrayList<>();
+        try {
+            
+            PreparedStatement p = con.prepareStatement("select DISTINCT brand  , coalesce((select StoryID from story where brand=StoryName limit 1),'') as Story from products where brand like ?  order by Story DESC, brand limit 7");
+            p.setString(1, "%" + search + "%");
+            ResultSet r = p.executeQuery();
+            while (r.next()) {
+                String text = r.getString(1);
+                boolean story = !r.getString(2).equals("");
+                list.add(new DataSearch(text, story));
+            }
+            r.close();
+            p.close();
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
+        return list;   }
+       
+       private List<DataSearch> search8(String search) {
+        List<DataSearch> list = new ArrayList<>();
+        try {
+            
+            PreparedStatement p = con.prepareStatement("select DISTINCT size  , coalesce((select StoryID from story where size=StoryName limit 1),'') as Story from products where size like ?  order by Story DESC, size limit 7");
+            p.setString(1, "%" + search + "%");
+            ResultSet r = p.executeQuery();
+            while (r.next()) {
+                String text = r.getString(1);
+                boolean story = !r.getString(2).equals("");
+                list.add(new DataSearch(text, story));
+            }
+            r.close();
+            p.close();
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
+        return list;   }
 
 
     private void dashbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashbtnMouseClicked
@@ -2097,6 +2374,7 @@ public void suggest_tyre_brand()
         onLeave(updatebtn);
         onLeave(purchasebtn);
         onLeave(statisticsbtn);
+        onLeave(staticsticsbtn2);
               
         
         dashp.setVisible(true);
@@ -2107,6 +2385,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(false);
         statisticsp.setVisible(false);
+        statisticsp2.setVisible(false);
         
         dashlbl.setForeground(Color.blue);
         itemlbl.setForeground(Color.white);
@@ -2128,6 +2407,7 @@ public void suggest_tyre_brand()
         onLeave(updatebtn);
         onLeave(purchasebtn);
         onLeave(statisticsbtn);
+        onLeave(staticsticsbtn2);
         
         dashp.setVisible(false);
         itemp.setVisible(true);
@@ -2137,6 +2417,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(false);
         statisticsp.setVisible(false);
+        statisticsp2.setVisible(false);
         
         dashlbl.setForeground(Color.white);
         itemlbl.setForeground(Color.blue);
@@ -2154,6 +2435,7 @@ public void suggest_tyre_brand()
         onLeave(updatebtn);
         onLeave(purchasebtn);
         onLeave(statisticsbtn);
+        onLeave(staticsticsbtn2);
         
         dashp.setVisible(false);
         itemp.setVisible(false);
@@ -2163,6 +2445,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(false);
         statisticsp.setVisible(false);
+        
         
         dashlbl.setForeground(Color.white);
         itemlbl.setForeground(Color.white);
@@ -2182,6 +2465,7 @@ public void suggest_tyre_brand()
         onClick(updatebtn);
         onLeave(purchasebtn);
         onLeave(statisticsbtn);
+        onLeave(staticsticsbtn2);
         
         dashp.setVisible(false);
         itemp.setVisible(false);
@@ -2191,6 +2475,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(true);
         purchasep.setVisible(false);
         statisticsp.setVisible(false);
+        statisticsp2.setVisible(false);
         
         dashlbl.setForeground(Color.white);
         itemlbl.setForeground(Color.white);
@@ -2208,6 +2493,7 @@ public void suggest_tyre_brand()
         onLeave(updatebtn);
         onClick(purchasebtn);
         onLeave(statisticsbtn);
+        onLeave(staticsticsbtn2);
         
         dashp.setVisible(false);
         itemp.setVisible(false);
@@ -2217,6 +2503,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(true);
         statisticsp.setVisible(false);
+        statisticsp2.setVisible(false);
         
         dashlbl.setForeground(Color.white);
         itemlbl.setForeground(Color.white);
@@ -2238,6 +2525,7 @@ public void suggest_tyre_brand()
         onLeave(purchasebtn);
         onClick(statisticsbtn);
         
+        
         dashp.setVisible(false);
         itemp.setVisible(false);
         alloyp.setVisible(false);
@@ -2246,12 +2534,14 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(false);
         statisticsp.setVisible(true);
+         statisticsp2.setVisible(false);
         
         dashlbl.setForeground(Color.white);
         itemlbl.setForeground(Color.white);
         saleslbl.setForeground(Color.white);
         updatelbl.setForeground(Color.white);
         purchaselbl.setForeground(Color.white);
+        statisticslbl.setForeground(Color.blue);
         statisticslbl.setForeground(Color.blue);
         
         chartdash();
@@ -2268,7 +2558,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(false);
         statisticsp.setVisible(false);
-        
+        statisticsp2.setVisible(false);
         alloytbl();
     }//GEN-LAST:event_alloysecpMouseClicked
 
@@ -2282,6 +2572,7 @@ public void suggest_tyre_brand()
         updatep.setVisible(false);
         purchasep.setVisible(false);
         statisticsp.setVisible(false);
+        statisticsp2.setVisible(false);
         
         tyretbl();
     }//GEN-LAST:event_tyresecpMouseClicked
@@ -3155,8 +3446,8 @@ public void suggest_tyre_brand()
                 pst2.setInt(1, lastid);
                 pst2.setString(2, pdate);
 
-                pst2.setString(3, pbrand);
-                pst2.setString(4, psize);
+                pst2.setString(3, psize);
+                pst2.setString(4, pbrand);
 
                 pst2.setString(5, pcategory);
                 pst2.setDouble(6, pbprice);
@@ -3190,19 +3481,6 @@ public void suggest_tyre_brand()
         sales_discount.setText(" ");
 
     }//GEN-LAST:event_btnPrintActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        sales_brand.setText(" ");
-        sales_size.setText(" ");
-        sales_category.setText(" ");
-        sales_retailp.setText(" ");
-        sales_quantity.setText(" ");
-        sales_discount.setText(" ");
-        txtTotalPrice.setText(" ");
-        txtBalance.setText(" ");
-        txtPay.setText(" ");
-
-    }//GEN-LAST:event_btnClearActionPerformed
     public void Balance(){
         
         Double total = Double.parseDouble(txtTotalPrice.getText());
@@ -3223,9 +3501,321 @@ public void suggest_tyre_brand()
          // txtBill.setText(txt);
         
     }
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void sales_selectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sales_selectMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel Df = (DefaultTableModel)sales_select.getModel();
 
-        DefaultTableModel model = new DefaultTableModel();
+        int selectIndex = sales_select.getSelectedRow();
+
+        sales_brand.setText(Df.getValueAt(selectIndex, 1).toString());
+        sales_size.setText(Df.getValueAt(selectIndex, 2).toString());
+        sales_category.setText(Df.getValueAt(selectIndex, 3).toString());
+        sales_retailp.setText(Df.getValueAt(selectIndex, 5).toString());
+        sales_discount.setText(Df.getValueAt(selectIndex, 6).toString());
+        
+        
+        sales_quantity.requestFocus();
+        
+
+    }//GEN-LAST:event_sales_selectMouseClicked
+
+    private void txtPayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPayKeyReleased
+        // TODO add your handling code here:
+        
+      Double balance;
+      Double salestot = Double.parseDouble(txtTotalPrice.getText());
+      Double pay = Double.parseDouble(txtPay.getText());
+      
+      balance=salestot-pay;
+      
+     txtBalance.setText(String.valueOf(balance).trim());
+      
+      
+      
+    }//GEN-LAST:event_txtPayKeyReleased
+
+    private void updatestkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updatestkMouseClicked
+        // TODO add your handling code here:
+        
+        updateproducts();
+    }//GEN-LAST:event_updatestkMouseClicked
+
+    private void salesearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesearchMouseClicked
+        // TODO add your handling code here:
+        
+        String alloy_size=sales_size_s.getText();
+        String alloy_brand=sales_brand_s.getText();
+        if(alloy_size.equalsIgnoreCase("")&&alloy_brand.equalsIgnoreCase("")){
+         JOptionPane.showMessageDialog(null,"Enter Size or Brand");
+         }else if( alloy_size != null&& alloy_brand.equalsIgnoreCase("")){
+         
+         
+         try {
+            
+            pst=con.prepareStatement("SELECT * FROM products where  size=? ");
+            
+            pst.setString(1,alloy_size );
+            
+            
+            ResultSet rs=pst.executeQuery();
+            
+            ResultSetMetaData rsm = rs.getMetaData();
+             int c;
+             c = rsm.getColumnCount();
+             
+             DefaultTableModel Df = (DefaultTableModel)sales_select.getModel();
+             Df.setRowCount(0);
+             
+             while(rs.next())
+             {
+                 Vector v4 = new Vector();
+                 
+                 for(int i = 1; i<= c; i ++)
+                 {
+                  
+                  
+                  v4.add(rs.getString("product_id"));
+                  v4.add(rs.getString("brand"));
+                  v4.add(rs.getString("size"));
+                  v4.add(rs.getString("category"));
+                  v4.add(rs.getString("buying_price"));
+                  v4.add(rs.getString("selling_price"));
+                  v4.add(rs.getString("selling_discount"));
+                  v4.add(rs.getString("quantity"));
+                  
+                 }
+                 
+                 Df.addRow(v4);
+                  
+              
+                 
+                 
+             }
+             
+            
+            
+            
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+         
+         }
+       
+        else if( alloy_size.equalsIgnoreCase("")&& alloy_brand != null){
+         
+         
+         try {
+            
+            pst=con.prepareStatement("SELECT * FROM products where   brand=?");
+            
+           
+            pst.setString(1,alloy_brand );
+            
+            ResultSet rs=pst.executeQuery();
+            
+            ResultSetMetaData rsm = rs.getMetaData();
+             int c;
+             c = rsm.getColumnCount();
+             
+             DefaultTableModel Df = (DefaultTableModel)sales_select.getModel();
+             Df.setRowCount(0);
+             
+             while(rs.next())
+             {
+                 Vector v4 = new Vector();
+                 
+                 for(int i = 1; i<= c; i ++)
+                 {
+                  
+                  
+                  v4.add(rs.getString("product_id"));
+                  v4.add(rs.getString("brand"));
+                  v4.add(rs.getString("size"));
+                  v4.add(rs.getString("category"));
+                  v4.add(rs.getString("buying_price"));
+                  v4.add(rs.getString("selling_price"));
+                  v4.add(rs.getString("selling_discount"));
+                  v4.add(rs.getString("quantity"));
+                  
+                 }
+                 
+                 Df.addRow(v4);
+                  
+              
+                 
+                 
+             }
+             
+            
+            
+            
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+         
+         }
+        else if( alloy_size != null && alloy_brand != null){
+         
+         
+        
+         
+         try {
+            
+            pst=con.prepareStatement("SELECT * FROM products where   size=? AND brand=?");
+            
+            pst.setString(1,alloy_size );
+            pst.setString(2,alloy_brand );
+            
+            ResultSet rs=pst.executeQuery();
+            
+            ResultSetMetaData rsm = rs.getMetaData();
+             int c;
+             c = rsm.getColumnCount();
+             
+             DefaultTableModel Df = (DefaultTableModel)sales_select.getModel();
+             Df.setRowCount(0);
+             
+             while(rs.next())
+             {
+                 Vector v4 = new Vector();
+                 
+                 for(int i = 1; i<= c; i ++)
+                 {
+                  
+                  
+                  v4.add(rs.getString("product_id"));
+                  v4.add(rs.getString("brand"));
+                  v4.add(rs.getString("size"));
+                  v4.add(rs.getString("category"));
+                  v4.add(rs.getString("buying_price"));
+                  v4.add(rs.getString("selling_price"));
+                  v4.add(rs.getString("selling_discount"));
+                  v4.add(rs.getString("quantity"));
+                  
+                 }
+                 
+                 Df.addRow(v4);
+                  
+              
+                 
+                 
+             }
+             
+            
+            
+            
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         }
+    }//GEN-LAST:event_salesearchMouseClicked
+
+    private void salerefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salerefreshMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salerefreshMouseClicked
+
+    private void sales_brand_sMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sales_brand_sMouseClicked
+        // TODO add your handling code here:
+         if (search7.getItemSize() > 0) {
+            menu7.show(sales_brand_s, 0, sales_brand_s.getHeight());
+            search7.clearSelected();
+        }
+    }//GEN-LAST:event_sales_brand_sMouseClicked
+
+    private void sales_brand_sKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_brand_sKeyPressed
+        // TODO add your handling code here:
+          if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            search7.keyUp();
+        } else if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            search7.keyDown();
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String text = search7.getSelectedText();
+            sales_brand_s.setText(text);
+            menu7.setVisible(false);
+        }
+    }//GEN-LAST:event_sales_brand_sKeyPressed
+
+    private void sales_brand_sKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_brand_sKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() != KeyEvent.VK_UP && evt.getKeyCode() != KeyEvent.VK_DOWN && evt.getKeyCode() != KeyEvent.VK_ENTER) {
+            String text = sales_brand_s.getText().trim().toLowerCase();
+            search7.setData(search7(text));
+            if (search7.getItemSize() > 0) {
+                //  * 2 top and bot border
+                menu7.show(sales_brand_s, 0, sales_brand_s.getHeight());
+                menu7.setPopupSize(menu7.getWidth(), (search7.getItemSize() * 35) + 2);
+            } else {
+                menu7.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_sales_brand_sKeyReleased
+
+    private void sales_size_sMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sales_size_sMouseClicked
+        // TODO add your handling code here:
+         if (search8.getItemSize() > 0) {
+            menu8.show(sales_size_s, 0, sales_size_s.getHeight());
+            search8.clearSelected();
+        }
+    }//GEN-LAST:event_sales_size_sMouseClicked
+
+    private void sales_size_sKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_size_sKeyPressed
+        // TODO add your handling code here:
+           if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            search8.keyUp();
+        } else if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            search8.keyDown();
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String text = search8.getSelectedText();
+            sales_size_s.setText(text);
+            menu8.setVisible(false);
+        }
+    }//GEN-LAST:event_sales_size_sKeyPressed
+
+    private void sales_size_sKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_size_sKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() != KeyEvent.VK_UP && evt.getKeyCode() != KeyEvent.VK_DOWN && evt.getKeyCode() != KeyEvent.VK_ENTER) {
+            String text = sales_size_s.getText().trim().toLowerCase();
+            search8.setData(search8(text));
+            if (search8.getItemSize() > 0) {
+                //  * 2 top and bot border
+                menu8.show(sales_size_s, 0, sales_size_s.getHeight());
+                menu8.setPopupSize(menu8.getWidth(), (search8.getItemSize() * 35) + 2);
+            } else {
+                menu8.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_sales_size_sKeyReleased
+
+    private void salesclearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesclearMouseClicked
+        // TODO add your handling code here:
+        sales_brand.setText(" ");
+        sales_size.setText(" ");
+        sales_category.setText(" ");
+        sales_retailp.setText(" ");
+        sales_quantity.setText(" ");
+        sales_discount.setText(" ");
+        txtTotalPrice.setText(" ");
+        txtBalance.setText(" ");
+        txtPay.setText(" ");
+    }//GEN-LAST:event_salesclearMouseClicked
+
+    private void salesaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesaddMouseClicked
+        // TODO add your handling code here:
+         DefaultTableModel model = new DefaultTableModel();
         DateTimeFormatter dt=DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now=LocalDateTime.now();
         String pdate=dt.format(now);
@@ -3267,112 +3857,141 @@ public void suggest_tyre_brand()
             sales_retailp.setText(" ");
             sales_quantity.setText(" ");
             sales_discount.setText(" ");
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_salesaddMouseClicked
 
-    private void sales_size_sMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sales_size_sMouseClicked
+    private void salesinvoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesinvoiceMouseClicked
         // TODO add your handling code here:
-         if (search6.getItemSize() > 0) {
-            menu6.show(sales_size_s, 0, sales_size_s.getHeight());
-            search6.clearSelected();
-        }
-    }//GEN-LAST:event_sales_size_sMouseClicked
+         DateTimeFormatter dt=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now=LocalDateTime.now();
+        String pdate=dt.format(now);
+        try{
+            int lastid=0;
+            Double finalA;
+            String query1="insert into sales(salesDate,totalAmount)values(?,?)";
+            pst=con.prepareStatement(query1,Statement.RETURN_GENERATED_KEYS);
 
-    private void sales_size_sKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_size_sKeyPressed
-        // TODO add your handling code here:
-            if (evt.getKeyCode() == KeyEvent.VK_UP) {
-            search6.keyUp();
-        } else if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            search6.keyDown();
-        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String text = search6.getSelectedText();
-            sales_size_s.setText(text);
-            menu6.setVisible(false);
-        }
-    }//GEN-LAST:event_sales_size_sKeyPressed
-
-    private void sales_size_sKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_size_sKeyReleased
-        // TODO add your handling code here:
-          if (evt.getKeyCode() != KeyEvent.VK_UP && evt.getKeyCode() != KeyEvent.VK_DOWN && evt.getKeyCode() != KeyEvent.VK_ENTER) {
-            String text = sales_size_s.getText().trim().toLowerCase();
-            search6.setData(search6(text));
-            if (search6.getItemSize() > 0) {
-                //  * 2 top and bot border
-                menu6.show(sales_size_s, 0, sales_size_s.getHeight());
-                menu6.setPopupSize(menu6.getWidth(), (search6.getItemSize() * 35) + 2);
-            } else {
-                menu6.setVisible(false);
+            pst.setString(1, pdate);
+            for(int i=0;i<tblSales.getRowCount();i++)
+            {
+                finalA = Double.parseDouble(tblSales.getValueAt(0, 6).toString());
+                pst.setString(2, finalA.toString());
             }
-        }
-    }//GEN-LAST:event_sales_size_sKeyReleased
+            pst.executeUpdate();
+            rs=pst.getGeneratedKeys();
 
-    private void sales_brand_sMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sales_brand_sMouseClicked
-        // TODO add your handling code here:
-         if (search5.getItemSize() > 0) {
-            menu5.show(sales_brand_s, 0, sales_brand_s.getHeight());
-            search5.clearSelected();
-        }
-    }//GEN-LAST:event_sales_brand_sMouseClicked
+            if(rs.next())
+            {
+                lastid=rs.getInt(1);
 
-    private void sales_brand_sKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_brand_sKeyPressed
-        // TODO add your handling code here:
-         if (evt.getKeyCode() == KeyEvent.VK_UP) {
-            search5.keyUp();
-        } else if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            search5.keyDown();
-        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String text = search5.getSelectedText();
-            update_brand_s.setText(text);
-            menu5.setVisible(false);
-        }
-    }//GEN-LAST:event_sales_brand_sKeyPressed
-
-    private void sales_brand_sKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sales_brand_sKeyReleased
-        // TODO add your handling code here:
-          if (evt.getKeyCode() != KeyEvent.VK_UP && evt.getKeyCode() != KeyEvent.VK_DOWN && evt.getKeyCode() != KeyEvent.VK_ENTER) {
-            String text = sales_brand_s.getText().trim().toLowerCase();
-            search5.setData(search5(text));
-            if (search5.getItemSize() > 0) {
-                //  * 2 top and bot border
-                menu5.show(sales_brand_s, 0, sales_brand_s.getHeight());
-                menu5.setPopupSize(menu5.getWidth(), (search5.getItemSize() * 35) + 2);
-            } else {
-                menu5.setVisible(false);
             }
+
+            String query2="insert into salesitem(salesID,salesDate,brand,size,category,sellingPrice,discount,quantitiy,total) VALUES (?,?,?,?,?,?,?,?,?)";
+            pst2=con.prepareStatement(query2);
+            String pbrand;
+            String psize;
+            String pcategory;
+            Double pbprice;
+
+            Double pdis;
+            Double pquantity;
+            Double piAmount;
+
+            for(int i=0;i<tblSales.getRowCount();i++)
+            {
+
+                psize=tblSales.getValueAt(i, 0).toString();
+                pbrand=tblSales.getValueAt(i, 1).toString();
+                pcategory=tblSales.getValueAt(i, 2).toString();
+                pbprice=Double.parseDouble(tblSales.getValueAt(i, 3).toString());
+                pquantity=Double.parseDouble(tblSales.getValueAt(i, 4).toString());
+                pdis=Double.parseDouble(tblSales.getValueAt(i, 5).toString());
+
+                piAmount=Double.parseDouble(tblSales.getValueAt(i, 6).toString());
+                //
+                pst2.setInt(1, lastid);
+                pst2.setString(2, pdate);
+
+                pst2.setString(3, psize);
+                pst2.setString(4, pbrand);
+
+                pst2.setString(5, pcategory);
+                pst2.setDouble(6, pbprice);
+
+                pst2.setDouble(7, pdis);
+                pst2.setDouble(8, pquantity);
+                pst2.setDouble(9, piAmount);
+                pst2.executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_sales_brand_sKeyReleased
 
-    private void sales_selectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sales_selectMouseClicked
+        // Balance();
+        bHeight = Double.valueOf(tblSales.getRowCount());
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        pj.setPrintable(new BillPrintable(), getPageFormat(pj));
+        try {
+            pj.print();
+
+        }
+        catch (PrinterException ex) {
+            ex.printStackTrace();
+        }
+        sales_brand.setText(" ");
+        sales_size.setText(" ");
+        sales_category.setText(" ");
+        sales_retailp.setText(" ");
+        sales_quantity.setText(" ");
+        sales_discount.setText(" ");
+    }//GEN-LAST:event_salesinvoiceMouseClicked
+
+    private void jLabel48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel48MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel Df = (DefaultTableModel)sales_select.getModel();
-
-        int selectIndex = sales_select.getSelectedRow();
-
-        sales_brand.setText(Df.getValueAt(selectIndex, 1).toString());
-        sales_size.setText(Df.getValueAt(selectIndex, 2).toString());
-        sales_category.setText(Df.getValueAt(selectIndex, 3).toString());
-        sales_retailp.setText(Df.getValueAt(selectIndex, 5).toString());
-        sales_discount.setText(Df.getValueAt(selectIndex, 6).toString());
+         dashp.setVisible(false);
+        itemp.setVisible(false);
+        alloyp.setVisible(false);
+        tyrep.setVisible(true);
+        salesp.setVisible(false);
+        updatep.setVisible(false);
+        purchasep.setVisible(false);
+        statisticsp.setVisible(false);
+        statisticsp2.setVisible(false);
         
-        
-        sales_quantity.requestFocus();
-        
+        tyretbl();
+    }//GEN-LAST:event_jLabel48MouseClicked
 
-    }//GEN-LAST:event_sales_selectMouseClicked
-
-    private void txtPayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPayKeyReleased
+    private void staticsticsbtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staticsticsbtn2MouseClicked
         // TODO add your handling code here:
         
-      Double balance;
-      Double salestot = Double.parseDouble(txtTotalPrice.getText());
-      Double pay = Double.parseDouble(txtPay.getText());
-      
-      balance=salestot-pay;
-      
-     txtBalance.setText(String.valueOf(balance).trim());
-      
-      
-      
-    }//GEN-LAST:event_txtPayKeyReleased
+         dashp.setVisible(false);
+        itemp.setVisible(false);
+        alloyp.setVisible(false);
+        tyrep.setVisible(false);
+        salesp.setVisible(false);
+        updatep.setVisible(false);
+        purchasep.setVisible(false);
+        statisticsp.setVisible(false);
+         statisticsp2.setVisible(true);
+    }//GEN-LAST:event_staticsticsbtn2MouseClicked
+
+    private void statisticslbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statisticslbl1MouseClicked
+ dashp.setVisible(false);
+        itemp.setVisible(false);
+        alloyp.setVisible(false);
+        tyrep.setVisible(false);
+        salesp.setVisible(false);
+        updatep.setVisible(false);
+        purchasep.setVisible(false);
+        statisticsp.setVisible(false);
+         statisticsp2.setVisible(true);        // TODO add your handling code here:
+        
+       
+        
+       
+        
+        
+    }//GEN-LAST:event_statisticslbl1MouseClicked
 
     ArrayList<String> itemName = new ArrayList<>();
     ArrayList<String> quantity = new ArrayList<>();
@@ -3769,13 +4388,6 @@ public void addtostock()
               pst2.setString(1,psize);
               rs=pst2.executeQuery();
               
-              if(rs.next()==false)
-            {
-               String query3="insert into productS(brand,size,category,buying_price,selling_price,selling_discount,quantity) VALUES (?,?,?,?,?,?,?)";
-               pst2=con.prepareStatement(query3);
-               
-               
-              
               psize=pur_table.getValueAt(i, 0).toString();
               pbrand=pur_table.getValueAt(i, 1).toString();
               pcategory=pur_table.getValueAt(i, 2).toString();
@@ -3783,6 +4395,15 @@ public void addtostock()
               psprice=Double.parseDouble(pur_table.getValueAt(i, 4).toString());
               pdis=Double.parseDouble(pur_table.getValueAt(i, 5).toString());
               pquantity=Integer.parseInt(pur_table.getValueAt(i, 6).toString());
+              
+              if(rs.next()==false)
+            {
+               String query3="insert into productS(brand,size,category,buying_price,selling_price,selling_discount,quantity) VALUES (?,?,?,?,?,?,?)";
+               pst2=con.prepareStatement(query3);
+               
+               
+              
+              
              
              
 
@@ -3794,7 +4415,7 @@ public void addtostock()
                 pst2.setDouble(4, pbprice);
                 pst2.setDouble(5, psprice);
                 pst2.setDouble(6, pdis);
-                pst2.setDouble(7, pquantity);
+                pst2.setInt(7, pquantity);
                  
                 pst2.executeUpdate();
                 
@@ -3805,13 +4426,22 @@ public void addtostock()
             }
               else
             {
-                    String query3 ="update products set quantity=quantity+ ? where size=? ";
+                    String query3 ="update productS set  `category`=?, `buying_price`=?, `selling_price`=?, `selling_discount`=?, `quantity`=quantity+? where brand=? AND size=? ";
+                    
                     pst2=con.prepareStatement(query3);
                     pquantity=Integer.parseInt(pur_table.getValueAt(i, 6).toString());
+                    
+                    
+                   
+                    pst2.setString(1, pcategory);
+                    pst2.setDouble(2, pbprice);
+                    pst2.setDouble(3, psprice);
+                    pst2.setDouble(4, pdis);
+                    pst2.setInt(5, pquantity);
               
                
-                     pst2.setInt(1, pquantity);
-                     pst2.setString(2, psize);
+                     pst2.setString(7, psize);
+                    pst2.setString(6, pbrand);
                      pst2.executeUpdate();
                     }
             
@@ -3845,42 +4475,43 @@ public void addtostock()
 public void chartdash()
 {
 
- try
-      {
-          Connection con = null;
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/dimuthu_tyre", "root", "");
-         final String SQL = "SELECT pattern,net_price_with_vat FROM tyre_products";
-    Statement statement = con.createStatement( );
-      ResultSet resultSet = statement.executeQuery("SELECT * FROM tyre_products" );
-            DefaultPieDataset dataset = new DefaultPieDataset( );
-             while( resultSet.next( ) ) {
-         dataset.setValue(resultSet.getString("pattern"),Double.parseDouble( resultSet.getString( "net_price_with_vat" )));
-      }
-       JFreeChart chart = ChartFactory.createPieChart("Report", dataset,true,true,false );
-        ChartPanel chartpanel = new ChartPanel(chart);
-   
-         final String SQL2 = "SELECT pattern,net_price_with_vat FROM tyre_products";
-            final CategoryDataset dataset2 = new JDBCCategoryDataset(con, SQL2);
-         JFreeChart chart2 = ChartFactory.createBarChart("Report","X-Axis","Y-Axis", dataset2, PlotOrientation.VERTICAL, false, false, false);
-        CategoryPlot catplot = chart2.getCategoryPlot();
-        catplot.setRangeGridlinePaint(Color.BLACK);
-          ChartPanel chartpanel2 = new ChartPanel(chart2);
- GridLayout layout = new GridLayout(0,2);
-   statisticsp.setLayout(layout);
-     statisticsp.removeAll();
-        statisticsp.add(chartpanel);
-        statisticsp.add(chartpanel2);
-        chartpanel.setVisible(true);
-       chartpanel.setSize(1000,650);
-        chartpanel2.setVisible(true);
-       chartpanel2.setSize(1000,650);
-       statisticsp.validate();    
-      }
-    catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);
-    }
-        
+// try
+//      {
+//          Connection con = null;
+//            Class.forName("com.mysql.jdbc.Driver");
+//            con = DriverManager.getConnection("jdbc:mysql://localhost/dimuthu_tyre", "root", "");
+//         final String SQL = "SELECT pattern,net_price_with_vat FROM tyre_products";
+//    Statement statement = con.createStatement( );
+//      ResultSet resultSet = statement.executeQuery("SELECT * FROM tyre_products" );
+//            DefaultPieDataset dataset = new DefaultPieDataset( );
+//             while( resultSet.next( ) ) {
+//         dataset.setValue(resultSet.getString("pattern"),Double.parseDouble( resultSet.getString( "net_price_with_vat" )));
+//      }
+//       JFreeChart chart = ChartFactory.createPieChart("Report", dataset,true,true,false );
+//        ChartPanel chartpanel = new ChartPanel(chart);
+//   
+//         final String SQL2 = "SELECT pattern,net_price_with_vat FROM tyre_products";
+//            final CategoryDataset dataset2 = new JDBCCategoryDataset(con, SQL2);
+//         JFreeChart chart2 = ChartFactory.createBarChart("Report","X-Axis","Y-Axis", dataset2, PlotOrientation.VERTICAL, false, false, false);
+//        CategoryPlot catplot = chart2.getCategoryPlot();
+//        catplot.setRangeGridlinePaint(Color.BLACK);
+//          ChartPanel chartpanel2 = new ChartPanel(chart2);
+// GridLayout layout = new GridLayout(0,2);
+//   statisticsp.setLayout(layout);
+//     //statisticsp.removeAll();
+//        statisticsp.add(chartpanel);
+//        statisticsp.add(chartpanel2);
+//        chartpanel.setVisible(true);
+//       chartpanel.setSize(1000,650);
+//        chartpanel2.setVisible(false);
+//       chartpanel2.setSize(1000,650);
+//       
+//       statisticsp.validate();    
+//      }
+//    catch(Exception e){
+//        JOptionPane.showMessageDialog(null, e);
+//    }
+//        
 
 
 }
@@ -4057,6 +4688,57 @@ public void  alloytbl()
         }
         
     }
+    
+    public void updateproducts()
+            
+    { 
+        String upbrand;
+             String upsize;
+             String upcategory;
+             
+             Double upsprice;
+             Double updis;
+             int upquantity;
+        
+        
+        
+            try {
+                upsize=update_size.getText();
+                upbrand=update_brand.getText();
+                upcategory=update_category.getSelectedItem().toString().trim();
+                upsprice=Double.parseDouble(update_sellingp.getText());
+                
+                updis=Double.parseDouble(update_dis.getText());
+                upquantity=Integer.parseInt(update_quantity.getText());
+                
+                
+                
+                String query ="update productS set  `category`=?,  `selling_price`=?, `selling_discount`=?, `quantity`=? where brand=? AND size=? ";
+                
+                pst2=con.prepareStatement(query);
+                
+                
+                
+                
+                pst2.setString(1, upcategory);
+                
+                pst2.setDouble(2, upsprice);
+                pst2.setDouble(3, updis);
+                pst2.setDouble(4, upquantity);
+                
+                
+                pst2.setString(6, upsize);
+                pst2.setString(5, upbrand);
+                pst2.executeUpdate();
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    
+    
+    
+    }
 
     
 
@@ -4082,8 +4764,6 @@ public void  alloytbl()
     private javax.swing.JPanel alloysearch;
     private javax.swing.JPanel alloysecp;
     private javax.swing.JTable alloytb;
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnPrint;
     private javax.swing.JPanel chart1st;
     private javax.swing.JPanel chart2st;
@@ -4110,6 +4790,7 @@ public void  alloytbl()
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -4146,7 +4827,12 @@ public void  alloytbl()
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -4188,6 +4874,7 @@ public void  alloytbl()
     private javax.swing.JPanel refreshalltbl;
     private javax.swing.JPanel refreshalltbl1;
     private javax.swing.JPanel refreshtyretbl1;
+    private javax.swing.JPanel salerefresh;
     private javax.swing.JTextField sales_brand;
     private swing.MyTextField sales_brand_s;
     private javax.swing.JTextField sales_category;
@@ -4197,15 +4884,23 @@ public void  alloytbl()
     private javax.swing.JTable sales_select;
     private javax.swing.JTextField sales_size;
     private swing.MyTextField sales_size_s;
+    private javax.swing.JPanel salesadd;
     private javax.swing.JPanel salesbtn;
+    private javax.swing.JPanel salesclear;
+    private javax.swing.JPanel salesearch;
+    private javax.swing.JPanel salesinvoice;
     private javax.swing.JLabel saleslbl;
     private javax.swing.JLabel saleslbl1;
     private javax.swing.JLabel saleslbl2;
     private javax.swing.JLabel saleslbl3;
+    private javax.swing.JLabel saleslbl4;
     private javax.swing.JPanel salesp;
+    private javax.swing.JPanel staticsticsbtn2;
     private javax.swing.JPanel statisticsbtn;
     private javax.swing.JLabel statisticslbl;
+    private javax.swing.JLabel statisticslbl1;
     private javax.swing.JPanel statisticsp;
+    private javax.swing.JPanel statisticsp2;
     private javax.swing.JTable tblSales;
     private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtPay;
@@ -4229,6 +4924,7 @@ public void  alloytbl()
     private javax.swing.JPanel updatebtn;
     private javax.swing.JLabel updatelbl;
     private javax.swing.JPanel updatep;
+    private javax.swing.JPanel updatestk;
     private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel1;
     private org.jdatepicker.impl.UtilCalendarModel utilCalendarModel2;
     // End of variables declaration//GEN-END:variables
